@@ -1,69 +1,83 @@
-import React, { useEffect, useState } from "react";
-import { View, StyleSheet } from "react-native";
-import * as SplashScreen from "expo-splash-screen";
-import { Stack } from "expo-router";
-import LottieView from "lottie-react-native";
+import {
+    Inter_400Regular,
+    Inter_500Medium,
+    Inter_600SemiBold,
+    Inter_700Bold,
+    useFonts,
+} from '@expo-google-fonts/inter';
+import { Stack } from 'expo-router';
+import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router/react-navigation';
+import * as SplashScreen from 'expo-splash-screen';
+import { StatusBar } from 'expo-status-bar';
+import { useCallback, useMemo, useState } from 'react';
 
-SplashScreen.preventAutoHideAsync().catch(() => {});
+import { AnimatedSplash } from '@/features/splash/AnimatedSplash';
+import { useTheme } from '@/theme';
+
+// Keep the native splash visible until our Lottie overlay is on screen.
+SplashScreen.preventAutoHideAsync();
+
+// TODO: change the file name if your Lottie file is named differently.
+const splashAnimation = require('../../assets/animations/splash-animation.json');
 
 export default function RootLayout() {
-    const [appIsReady, setAppIsReady] = useState(false);
-    const [animationFinished, setAnimationFinished] = useState(false);
+    const { colors, isDark } = useTheme();
 
-    useEffect(() => {
-        async function prepareSystem() {
-            try {
-                // Place real app checks here if needed (Fonts, auth states, etc.)
-                await new Promise((resolve) => setTimeout(resolve, 3010));
-            } catch (e) {
-                console.warn(e);
-            } finally {
-                setAppIsReady(true);
-            }
-        }
-        prepareSystem();
+    const [fontsLoaded, fontError] = useFonts({
+        Inter_400Regular,
+        Inter_500Medium,
+        Inter_600SemiBold,
+        Inter_700Bold,
+    });
+    // If a font fails to load we continue with system fonts rather than block the app.
+    const fontsReady = fontsLoaded || !!fontError;
+
+    const [animationDone, setAnimationDone] = useState(false);
+    const showSplash = !(animationDone && fontsReady);
+
+    const handleSplashReady = useCallback(() => {
+        SplashScreen.hideAsync();
     }, []);
+    const handleSplashFinish = useCallback(() => setAnimationDone(true), []);
 
-    const handleAnimationLoaded = async () => {
-        // Hide the static native splash screen ONLY when Lottie is ready to play
-        await SplashScreen.hideAsync().catch(() => {});
-    };
+    // Keep React Navigation's backgrounds in sync with our tokens (no white flash in dark mode).
+    const navigationTheme = useMemo(() => {
+        const base = isDark ? DarkTheme : DefaultTheme;
+        return {
+            ...base,
+            colors: {
+                ...base.colors,
+                primary: colors.primary,
+                background: colors.background,
+                card: colors.surface,
+                text: colors.text,
+                border: colors.outline,
+            },
+        };
+    }, [isDark, colors]);
 
-    // Keep showing Lottie until the app is ready AND the animation completes
-    if (!appIsReady || !animationFinished) {
-        return (
-            <View style={styles.container}>
-                <LottieView
-                    source={require('@/assets/images/splash-animation.json')}
-                    autoPlay
-                    loop={false}
-                    onAnimationLoaded={handleAnimationLoaded}
-                    onAnimationFinish={() => setAnimationFinished(true)}
-                    style={styles.animation}
-                    resizeMode="contain"
-                />
-            </View>
-        );
-    }
-
-    // Animation is done! Mount Expo Router's Stack Navigation seamlessly
     return (
-        <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="index" />
-        </Stack>
+        <ThemeProvider value={navigationTheme}>
+            <StatusBar style={showSplash ? 'light' : isDark ? 'light' : 'dark'} />
+
+            {/* The app only mounts once fonts are ready, so no text renders in the wrong font. */}
+            {fontsReady && (
+                <Stack
+                    screenOptions={{
+                        headerShown: false,
+                        contentStyle: { backgroundColor: colors.background },
+                    }}
+                />
+            )}
+
+            {/* The splash covers the app until the animation ends AND fonts are loaded. */}
+            {showSplash && (
+                    <AnimatedSplash
+                    source={splashAnimation}
+                    onReady={handleSplashReady}
+                    onFinish={handleSplashFinish}
+                />
+            )}
+        </ThemeProvider>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        // Must match the backgroundColor in app.json!
-        backgroundColor: "#f28500",
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    animation: {
-        width: "100%",
-        height: "100%",
-    },
-})
