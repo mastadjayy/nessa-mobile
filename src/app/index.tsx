@@ -1,28 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { useRouter } from 'expo-router';
 
-export default function WelcomeScreen() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Akwaaba ɛ ɔ ŋ Ɛ Ɔ Ŋ</Text>
-      <Text style={styles.subtitle}>Splash animation finished successfully!</Text>
-    </View>
-  );
+import { WelcomeScreen } from '@/features/onboarding/WelcomeScreen';
+import { track } from '@/services/analytics';
+
+export default function Index() {
+    const router = useRouter();
+
+    return (
+        <WelcomeScreen
+            onStart={() => {
+                track("onboarding_started");
+                router.push("/language");
+            }}
+        />
+    );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 8,
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#666',
-  },
-});

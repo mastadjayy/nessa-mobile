@@ -11,17 +11,22 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useCallback, useMemo, useState } from 'react';
 
+import { useWarmBackgroundColor } from '@/components/ui/WarmBackground';
 import { AnimatedSplash } from '@/features/splash/AnimatedSplash';
+import { useProfileStore } from '@/store/profileStore';
 import { useTheme } from '@/theme';
 
 // Keep the native splash visible until our Lottie overlay is on screen.
 SplashScreen.preventAutoHideAsync();
 
-// TODO: change the file name if your Lottie file is named differently.
+// File name of splash Lottie file.
 const splashAnimation = require('../../assets/animations/splash-animation.json');
 
 export default function RootLayout() {
     const { colors, isDark } = useTheme();
+    const onboardingCompleted = useProfileStore((s) => s.onboardingCompleted);
+    // Same color as the screens, so the native navigation container never shows a different shade.
+    const warmBackground = useWarmBackgroundColor();
 
     const [fontsLoaded, fontError] = useFonts({
         Inter_400Regular,
@@ -48,13 +53,13 @@ export default function RootLayout() {
             colors: {
                 ...base.colors,
                 primary: colors.primary,
-                background: colors.background,
+                background: warmBackground,
                 card: colors.surface,
                 text: colors.text,
                 border: colors.outline,
             },
         };
-    }, [isDark, colors]);
+    }, [isDark, colors, warmBackground]);
 
     return (
         <ThemeProvider value={navigationTheme}>
@@ -65,9 +70,19 @@ export default function RootLayout() {
                 <Stack
                     screenOptions={{
                         headerShown: false,
-                        contentStyle: { backgroundColor: colors.background },
+                        contentStyle: { backgroundColor: warmBackground },
                     }}
-                />
+                >
+                    {/* New learners see the welcome screen and onboarding. */}
+                    <Stack.Protected guard={!onboardingCompleted}>
+                        <Stack.Screen name="index" />
+                        <Stack.Screen name="(onboarding)" />
+                    </Stack.Protected>
+                    {/* Returning learners go straight to the app */}
+                    <Stack.Protected guard={onboardingCompleted}>
+                        <Stack.Screen name="home" />
+                    </Stack.Protected>
+                </Stack>
             )}
 
             {/* The splash covers the app until the animation ends AND fonts are loaded. */}
