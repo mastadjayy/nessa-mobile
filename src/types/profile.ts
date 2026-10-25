@@ -1,7 +1,7 @@
 /** Languages shown in the picket.
  * Only the ones in AvailableLanguageId can be learned today
 */
-export type LanguageId = "kroumen" | "twi" | "ga" | "fante" | "ewe" | "dagbani";
+export type LanguageId = "twi" | "kroumen" | "ga" | "fante" | "ewe" | "dagbani";
 export type AvailableLanguageId = "twi";
 
 /** "few_words" also starts on the Beginner course in the MVP. */

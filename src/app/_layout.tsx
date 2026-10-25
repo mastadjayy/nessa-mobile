@@ -9,9 +9,10 @@ import { Stack } from 'expo-router';
 import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router/react-navigation';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useWarmBackgroundColor } from '@/components/ui/WarmBackground';
+import { getDb } from '@/db';
 import { AnimatedSplash } from '@/features/splash/AnimatedSplash';
 import { useProfileStore } from '@/store/profileStore';
 import { useTheme } from '@/theme';
@@ -36,6 +37,11 @@ export default function RootLayout() {
     });
     // If a font fails to load we continue with system fonts rather than block the app.
     const fontsReady = fontsLoaded || !!fontError;
+
+    // Open, migrate and seed the database while the splash is playing.
+    useEffect(() => {
+        getDb();
+    }, []);
 
     const [animationDone, setAnimationDone] = useState(false);
     const showSplash = !(animationDone && fontsReady);
@@ -81,6 +87,10 @@ export default function RootLayout() {
                     {/* Returning learners go straight to the app */}
                     <Stack.Protected guard={onboardingCompleted}>
                         <Stack.Screen name="home" />
+                        <Stack.Screen
+                            name="lesson/[id]"
+                            options={{ animation: 'slide_from_bottom', gestureEnabled: false }}
+                        />
                     </Stack.Protected>
                 </Stack>
             )}

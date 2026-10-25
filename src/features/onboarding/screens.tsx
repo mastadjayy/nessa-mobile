@@ -1,6 +1,9 @@
 import { useRouter } from 'expo-router';
+import { useMemo } from 'react';
 import { Text, View } from 'react-native';
 
+import { getNextLesson } from '@/db/queries';
+import { courseIdFor } from '@/features/lessons/course';
 import { track } from '@/services/analytics';
 import { useProfileStore } from '@/store/profileStore';
 import { useTheme } from '@/theme';
@@ -9,7 +12,6 @@ import type { DailyMinutes } from '@/types/profile';
 import { ChoiceStep } from './components/ChoiceStep';
 import { OnboardingScaffold } from './components/OnboardingScaffold';
 import {
-    FIRST_LESSON_PREVIEW,
     LANGUAGE_NAMES,
     LANGUAGE_OPTIONS,
     LEVEL_LABELS,
@@ -112,6 +114,8 @@ export function ReadyScreen() {
   const dailyMinutes = useProfileStore((s) => s.dailyMinutes);
   const completeOnboarding = useProfileStore((s) => s.completeOnboarding);
 
+  const lesson = useMemo(() => getNextLesson(courseIdFor(language, level)), [language, level]);
+
   const chips = [
     LANGUAGE_NAMES[language],
     level ? LEVEL_LABELS[level] : 'Beginner',
@@ -137,41 +141,45 @@ export function ReadyScreen() {
       ctaLabel="Start lesson"
       onContinue={handleStart}
     >
-      <View
-        style={[
-          elevation.card,
-          {
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: spacing.md,
-            padding: spacing.lg,
-            borderRadius: radius.lg,
-            backgroundColor: colors.surface,
-            borderWidth: 1,
-            borderColor: colors.outline,
-          },
-        ]}
-      >
+      {lesson ? (
         <View
-          style={{
-            width: 56,
-            height: 56,
-            borderRadius: radius.md,
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: colors.primaryContainer,
-          }}
+          style={[
+            elevation.card,
+            {
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: spacing.md,
+              padding: spacing.lg,
+              borderRadius: radius.lg,
+              backgroundColor: colors.surface,
+              borderWidth: 1,
+              borderColor: colors.outline,
+            },
+          ]}
         >
-          <Text style={{ fontSize: 28 }}>👋</Text>
+          <View
+            style={{
+              width: 56,
+              height: 56,
+              borderRadius: radius.md,
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: colors.primaryContainer,
+            }}
+          >
+            <Text style={{ fontSize: 28 }}>👋</Text>
+          </View>
+          <View style={{ flex: 1, gap: 2 }}>
+            <Text style={[typography.caption, { color: colors.textSecondary }]}>
+              Lesson {lesson.position}
+            </Text>
+            <Text style={[typography.title, { color: colors.text }]}>{lesson.title}</Text>
+            <Text style={[typography.caption, { color: colors.textSecondary }]}>
+              About {lesson.estimatedMinutes} minutes · {lesson.itemCount} new words and phrases
+            </Text>
+          </View>
         </View>
-        <View style={{ flex: 1, gap: 2 }}>
-          <Text style={[typography.caption, { color: colors.textSecondary }]}>Lesson 1</Text>
-          <Text style={[typography.title, { color: colors.text }]}>{FIRST_LESSON_PREVIEW.title}</Text>
-          <Text style={[typography.caption, { color: colors.textSecondary }]}>
-            {FIRST_LESSON_PREVIEW.duration}
-          </Text>
-        </View>
-      </View>
+      ) : null}
 
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm }}>
         {chips.map((chip) => (

@@ -1,41 +1,46 @@
-import { Pressable, StyleSheet, Text, type StyleProp, type ViewStyle } from "react-native";
+import { Pressable, StyleSheet, Text, type StyleProp, type ViewStyle } from 'react-native';
 
-import { useTheme } from "@/theme";
+import { useTheme } from '@/theme';
 
 type Props = {
     label: string;
     onPress: () => void;
-    variant?: "primary" | "secondary";
+    variant?: 'primary' | 'secondary' | 'success' | 'error';
     disabled?: boolean;
     accessibilityHint?: string;
     style?: StyleProp<ViewStyle>;
 };
 
 /**
- * Large pill button. Primary = brand orange with dark text (6.6:1 contrast).
- * White text on #F28500 would only reach 2.6:1, so it is never used.
+ * Large pill button. Primary = brand orange with white text. (dark text gives 6.6:1 contrast).
+ * (White text on #F28500 would only reach 2.6:1, so it is never used.)
+ * Success and error are used for the Continue button after answer is checked.
  */
 export function Button({
     label,
     onPress,
-    variant = "primary",
+    variant = 'primary',
     disabled= false,
     accessibilityHint,
     style,
 }: Props) {
     const { colors, radius, sizing, typography } = useTheme();
 
-    const background = disabled
-        ? colors.disabledFill
-        : variant === "primary"
-            ? colors.primary
-            : colors.surfaceVariant;
+    const fills = {
+        primary: colors.primary,
+        secondary: colors.surfaceVariant,
+        success: colors.success,
+        error: colors.error,
+    } as const;
+    const labels = {
+        primary: colors.textOnPrimary,
+        secondary: colors.text,
+        success: colors.onSuccess,
+        error: colors.onError,        
+    } as const;
 
-    const textColor = disabled
-        ? colors.textDisabled
-        : variant === "primary"
-            ? colors.textOnPrimaryDeep
-            : colors.text;
+    const background = disabled ? colors.disabledFill : fills[variant];
+    const textColor = disabled ? colors.textDisabled : labels[variant];
 
     return (
         <Pressable

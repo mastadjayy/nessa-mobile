@@ -8,7 +8,10 @@ type Props = {
   description?: string;
   emoji?: string;
   selected?: boolean;
+  /** Result of a checked answer. Always shown withan icon, never by color alone. */
+  status?: 'correct' | 'incorrect';
   onPress: () => void;
+  disabled?: boolean;
   /** Small pill on the right, e.g. "Coming soon". Text plus icon, never color alone. */
   badge?: { text: string; done?: boolean };
   /** De-emphasizes cards that cannot be chosen yet. */
@@ -22,7 +25,9 @@ export function OptionCard({
   description,
   emoji,
   selected = false,
+  status,
   onPress,
+  disabled = false,
   badge,
   muted = false,
   accessibilityRole = 'radio',
@@ -30,15 +35,31 @@ export function OptionCard({
 }: Props) {
   const { colors, spacing, radius, sizing, typography } = useTheme();
 
-  const textColor = selected ? colors.onPrimaryContainer : muted ? colors.textSecondary : colors.text;
+  let background = selected ? colors.primaryContainer : colors.surface;
+  let border = selected ? colors.primary : colors.outline;
+  let textColor = selected ? colors.onPrimaryContainer : muted ? colors.textSecondary : colors.text;
+  let secondaryColor = selected ? colors.onPrimaryContainer : colors.textSecondary;
+
+  if (status === 'correct') {
+    background = colors.successContainer;
+    border = colors.success;
+    textColor = secondaryColor = colors.onSuccessContainer;
+  } else if (status === 'incorrect') {
+    background = colors.errorContainer;
+    border = colors.error;
+    textColor = secondaryColor = colors.onErrorContainer;
+  }
+
+  const statusLabel = status === 'correct' ? '. Correct answer' : status === 'incorrect' ? '. Incorrect' : '';
 
   return (
     <Pressable
       onPress={onPress}
+      disabled={disabled}
       accessibilityRole={accessibilityRole}
-      accessibilityLabel={description ? `${label}. ${description}` : label}
+      accessibilityLabel={`${description ? `${label}. ${description}` : label}${statusLabel}`}
       accessibilityHint={accessibilityHint}
-      accessibilityState={{ selected }}
+      accessibilityState={{ selected, disabled }}
       style={({ pressed }) => [
         styles.card,
         {
@@ -47,9 +68,9 @@ export function OptionCard({
           paddingHorizontal: spacing.lg,
           paddingVertical: spacing.md,
           gap: spacing.md,
-          backgroundColor: selected ? colors.primaryContainer : colors.surface,
-          borderColor: selected ? colors.primary : colors.outline,
-          transform: [{ scale: pressed ? 0.98 : 1 }],
+          backgroundColor: background,
+          borderColor: border,
+          transform: [{ scale: pressed && !disabled ? 0.98 : 1 }],
         },
       ]}
     >
@@ -94,6 +115,10 @@ export function OptionCard({
             {badge.text}
           </Text>
         </View>
+      ) : status === 'correct' ? (
+        <Ionicons name="checkmark-circle" size={sizing.iconMd} color={colors.success} />
+      ) : status === 'incorrect' ? (
+        <Ionicons name="close-circle" size={sizing.iconMd} color={colors.error} />
       ) : selected ? (
         <Ionicons name="checkmark-circle" size={sizing.iconMd} color={colors.primaryDeep} />
       ) : null}

@@ -12,8 +12,8 @@ export type Option<T extends string = string> = {
 };
 
 export const LANGUAGE_OPTIONS: Option<LanguageId>[] = [
-    { id:"kroumen", label: "Kroumen", description: "Kroumen - Bas Sassandra" },
     { id:"twi", label: "Twi", description: "Asante dialect" },
+    { id:"kroumen", label: "Kroumen", comingSoon: true },
     { id:"ga", label: "Ga", comingSoon: true },
     { id:"fante", label: "Fante", comingSoon: true },
     { id:"ewe", label: "Ewe", comingSoon: true },

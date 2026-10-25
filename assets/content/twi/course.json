@@ -1,0 +1,184 @@
+{
+  "contentVersion": 1,
+  "status": "PLACEHOLDER: drafted by an AI assistant. Every item must be reviewed by a native Asante Twi speaker before release.",
+  "language": {
+    "id": "twi",
+    "name": "Twi",
+    "variant": "Asante"
+  },
+  "course": {
+    "id": "twi-beginner",
+    "level": "beginner",
+    "title": "Twi · Beginner",
+    "description": "Start speaking Asante Twi with greetings and everyday basics."
+  },
+  "modules": [
+    {
+      "id": "twi-b1",
+      "title": "Greetings & Basics",
+      "description": "Say hello, ask how someone is, and be polite.",
+      "lessons": [
+        {
+          "id": "twi-b1-l1",
+          "title": "Greetings",
+          "description": "Welcome people, greet them through the day, and say thank you.",
+          "estimatedMinutes": 5,
+          "items": [
+            {
+              "id": "twi-b1-l1-akwaaba",
+              "kind": "word",
+              "text": "Akwaaba",
+              "respelling": "ah-KWAH-bah",
+              "audioFile": null,
+              "notes": "The traditional way to welcome someone.",
+              "reviewed": false,
+              "translations": { "en": { "text": "Welcome" } }
+            },
+            {
+              "id": "twi-b1-l1-maakye",
+              "kind": "word",
+              "text": "Maakye",
+              "respelling": "mah-CHEH",
+              "audioFile": null,
+              "notes": "Used in the morning.",
+              "reviewed": false,
+              "translations": { "en": { "text": "Good morning" } }
+            },
+            {
+              "id": "twi-b1-l1-maaha",
+              "kind": "word",
+              "text": "Maaha",
+              "respelling": "mah-HAH",
+              "audioFile": null,
+              "notes": "Used in the afternoon.",
+              "reviewed": false,
+              "translations": { "en": { "text": "Good afternoon" } }
+            },
+            {
+              "id": "twi-b1-l1-maadwo",
+              "kind": "word",
+              "text": "Maadwo",
+              "respelling": "mah-JOH",
+              "audioFile": null,
+              "notes": "Used in the evening.",
+              "reviewed": false,
+              "translations": { "en": { "text": "Good evening" } }
+            },
+            {
+              "id": "twi-b1-l1-wo-ho-te-sen",
+              "kind": "phrase",
+              "text": "Wo ho te sɛn?",
+              "respelling": "woh hoh teh SEHN",
+              "audioFile": null,
+              "notes": "Literally “how is your body?”. A common way to ask how someone is.",
+              "reviewed": false,
+              "translations": { "en": { "text": "How are you?" } }
+            },
+            {
+              "id": "twi-b1-l1-me-ho-ye",
+              "kind": "phrase",
+              "text": "Me ho yɛ",
+              "respelling": "meh hoh YEH",
+              "audioFile": null,
+              "notes": "A common reply to “Wo ho te sɛn?”.",
+              "reviewed": false,
+              "translations": { "en": { "text": "I am fine" } }
+            },
+            {
+              "id": "twi-b1-l1-medaase",
+              "kind": "word",
+              "text": "Medaase",
+              "respelling": "meh-DAH-seh",
+              "audioFile": null,
+              "notes": null,
+              "reviewed": false,
+              "translations": { "en": { "text": "Thank you" } }
+            },
+            {
+              "id": "twi-b1-l1-nante-yie",
+              "kind": "phrase",
+              "text": "Nante yie",
+              "respelling": "NAHN-teh YEE-eh",
+              "audioFile": null,
+              "notes": "Literally “walk well”. Said to someone who is leaving.",
+              "reviewed": false,
+              "translations": { "en": { "text": "Goodbye" } }
+            }
+          ],
+          "exercises": [
+            {
+              "id": "twi-b1-l1-ex1",
+              "itemId": "twi-b1-l1-akwaaba",
+              "type": "multiple_choice",
+              "prompt": "What does “Akwaaba” mean?",
+              "payload": { "options": ["Welcome", "Thank you", "Goodbye", "Good morning"] },
+              "acceptedAnswers": ["Welcome"],
+              "explanation": "“Akwaaba” is how you welcome someone."
+            },
+            {
+              "id": "twi-b1-l1-ex2",
+              "itemId": "twi-b1-l1-medaase",
+              "type": "multiple_choice",
+              "prompt": "How do you say “Thank you” in Twi?",
+              "payload": { "options": ["Medaase", "Maakye", "Akwaaba", "Nante yie"] },
+              "acceptedAnswers": ["Medaase"],
+              "explanation": "“Medaase” means thank you."
+            },
+            {
+              "id": "twi-b1-l1-ex3",
+              "itemId": "twi-b1-l1-maakye",
+              "type": "multiple_choice",
+              "prompt": "Which greeting do you use in the morning?",
+              "payload": { "options": ["Maakye", "Maaha", "Maadwo", "Medaase"] },
+              "acceptedAnswers": ["Maakye"],
+              "explanation": "“Maakye” is the morning greeting."
+            },
+            {
+              "id": "twi-b1-l1-ex4",
+              "itemId": "twi-b1-l1-wo-ho-te-sen",
+              "type": "multiple_choice",
+              "prompt": "What does “Wo ho te sɛn?” mean?",
+              "payload": { "options": ["How are you?", "What is your name?", "Where are you from?", "See you later"] },
+              "acceptedAnswers": ["How are you?"],
+              "explanation": "“Wo ho te sɛn?” asks how someone is."
+            },
+            {
+              "id": "twi-b1-l1-ex5",
+              "itemId": "twi-b1-l1-me-ho-ye",
+              "type": "multiple_choice",
+              "prompt": "Someone asks “Wo ho te sɛn?”. Which answer means “I am fine”?",
+              "payload": { "options": ["Me ho yɛ", "Akwaaba", "Nante yie", "Maadwo"] },
+              "acceptedAnswers": ["Me ho yɛ"],
+              "explanation": "“Me ho yɛ” means I am fine."
+            },
+            {
+              "id": "twi-b1-l1-ex6",
+              "itemId": null,
+              "type": "matching",
+              "prompt": "Match each Twi word with its meaning",
+              "payload": {
+                "pairs": [
+                  { "left": "Maakye", "right": "Good morning" },
+                  { "left": "Maaha", "right": "Good afternoon" },
+                  { "left": "Maadwo", "right": "Good evening" },
+                  { "left": "Medaase", "right": "Thank you" }
+                ]
+              },
+              "acceptedAnswers": null,
+              "explanation": null
+            },
+            {
+              "id": "twi-b1-l1-ex7",
+              "itemId": "twi-b1-l1-nante-yie",
+              "type": "multiple_choice",
+              "prompt": "What do you say to someone who is leaving?",
+              "payload": { "options": ["Nante yie", "Maakye", "Akwaaba", "Me ho yɛ"] },
+              "acceptedAnswers": ["Nante yie"],
+              "explanation": "“Nante yie” means goodbye, or literally “walk well”."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

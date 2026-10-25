@@ -1,10 +1,10 @@
 import { View } from 'react-native';
 
+import { OptionCard } from '@/components/ui/OptionCard';
 import { useTheme } from '@/theme';
 
 import type { Option } from '../options';
 import { OnboardingScaffold } from './OnboardingScaffold';
-import { OptionCard } from './OptionCard';
 
 type Props<T extends string> = {
   progress: number;
