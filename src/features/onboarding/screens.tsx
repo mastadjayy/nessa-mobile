@@ -113,6 +113,7 @@ export function ReadyScreen() {
   const reason = useProfileStore((s) => s.reason);
   const dailyMinutes = useProfileStore((s) => s.dailyMinutes);
   const completeOnboarding = useProfileStore((s) => s.completeOnboarding);
+  const setPendingLesson = useProfileStore((s) => s.setPendingLesson);
 
   const lesson = useMemo(() => getNextLesson(courseIdFor(language, level)), [language, level]);
 
@@ -129,6 +130,9 @@ export function ReadyScreen() {
       reason,
       daily_minutes: dailyMinutes,
     });
+    // Home opens this lesson as soon as it appears. Navigating from here would run while
+    // the route guard is swapping screens, which is fragile.
+    setPendingLesson(lesson?.id ?? null);
     // Flips the route guard in the root layout, which moves the learner out of onboarding.
     completeOnboarding();
   };

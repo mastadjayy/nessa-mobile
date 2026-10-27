@@ -1,4 +1,5 @@
 import { useRouter } from 'expo-router';
+import { useEffect } from 'react';
 import { ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -23,9 +24,18 @@ export function HomeScreen() {
   const language = useProfileStore((s) => s.language);
   const level = useProfileStore((s) => s.level);
   const dailyMinutes = useProfileStore((s) => s.dailyMinutes);
+  const pendingLessonId = useProfileStore((s) => s.pendingLessonId);
+  const setPendingLesson = useProfileStore((s) => s.setPendingLesson);
 
   const path = useCoursePath(courseIdFor(language, level));
   const progress = useProgressSummary();
+
+  // Right after onboarding, go straight into the first lesson.
+  useEffect(() => {
+    if (!pendingLessonId) return;
+    setPendingLesson(null);
+    router.push({ pathname: '/lesson/[id]', params: { id: pendingLessonId } });
+  }, [pendingLessonId, setPendingLesson, router]);
 
   const openLesson = (lesson: PathLesson) =>
     router.push({ pathname: '/lesson/[id]', params: { id: lesson.id } });

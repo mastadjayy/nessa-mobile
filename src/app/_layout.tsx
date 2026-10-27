@@ -79,9 +79,10 @@ export default function RootLayout() {
                         contentStyle: { backgroundColor: warmBackground },
                     }}
                 >
-                    {/* New learners see the welcome screen and onboarding. */}
+                    {/* "/" must always exist: it shows the welcome screen, or sends returning learners to Home. */}
+                    <Stack.Screen name="index" />
+                    {/* New learners go through onboarding. */}
                     <Stack.Protected guard={!onboardingCompleted}>
-                        <Stack.Screen name="index" />
                         <Stack.Screen name="(onboarding)" />
                     </Stack.Protected>
                     {/* Returning learners go straight to the app */}
