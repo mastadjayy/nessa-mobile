@@ -1,5 +1,5 @@
 {
-  "contentVersion": 1,
+  "contentVersion": 2,
   "status": "PLACEHOLDER: drafted by an AI assistant. Every item must be reviewed by a native Asante Twi speaker before release.",
   "language": {
     "id": "twi",
@@ -32,7 +32,11 @@
               "audioFile": null,
               "notes": "The traditional way to welcome someone.",
               "reviewed": false,
-              "translations": { "en": { "text": "Welcome" } }
+              "translations": {
+                "en": {
+                  "text": "Welcome"
+                }
+              }
             },
             {
               "id": "twi-b1-l1-maakye",
@@ -42,7 +46,11 @@
               "audioFile": null,
               "notes": "Used in the morning.",
               "reviewed": false,
-              "translations": { "en": { "text": "Good morning" } }
+              "translations": {
+                "en": {
+                  "text": "Good morning"
+                }
+              }
             },
             {
               "id": "twi-b1-l1-maaha",
@@ -52,7 +60,11 @@
               "audioFile": null,
               "notes": "Used in the afternoon.",
               "reviewed": false,
-              "translations": { "en": { "text": "Good afternoon" } }
+              "translations": {
+                "en": {
+                  "text": "Good afternoon"
+                }
+              }
             },
             {
               "id": "twi-b1-l1-maadwo",
@@ -62,7 +74,11 @@
               "audioFile": null,
               "notes": "Used in the evening.",
               "reviewed": false,
-              "translations": { "en": { "text": "Good evening" } }
+              "translations": {
+                "en": {
+                  "text": "Good evening"
+                }
+              }
             },
             {
               "id": "twi-b1-l1-wo-ho-te-sen",
@@ -72,7 +88,11 @@
               "audioFile": null,
               "notes": "Literally “how is your body?”. A common way to ask how someone is.",
               "reviewed": false,
-              "translations": { "en": { "text": "How are you?" } }
+              "translations": {
+                "en": {
+                  "text": "How are you?"
+                }
+              }
             },
             {
               "id": "twi-b1-l1-me-ho-ye",
@@ -82,7 +102,11 @@
               "audioFile": null,
               "notes": "A common reply to “Wo ho te sɛn?”.",
               "reviewed": false,
-              "translations": { "en": { "text": "I am fine" } }
+              "translations": {
+                "en": {
+                  "text": "I am fine"
+                }
+              }
             },
             {
               "id": "twi-b1-l1-medaase",
@@ -92,7 +116,11 @@
               "audioFile": null,
               "notes": null,
               "reviewed": false,
-              "translations": { "en": { "text": "Thank you" } }
+              "translations": {
+                "en": {
+                  "text": "Thank you"
+                }
+              }
             },
             {
               "id": "twi-b1-l1-nante-yie",
@@ -102,7 +130,11 @@
               "audioFile": null,
               "notes": "Literally “walk well”. Said to someone who is leaving.",
               "reviewed": false,
-              "translations": { "en": { "text": "Goodbye" } }
+              "translations": {
+                "en": {
+                  "text": "Goodbye"
+                }
+              }
             }
           ],
           "exercises": [
@@ -111,8 +143,17 @@
               "itemId": "twi-b1-l1-akwaaba",
               "type": "multiple_choice",
               "prompt": "What does “Akwaaba” mean?",
-              "payload": { "options": ["Welcome", "Thank you", "Goodbye", "Good morning"] },
-              "acceptedAnswers": ["Welcome"],
+              "payload": {
+                "options": [
+                  "Welcome",
+                  "Thank you",
+                  "Goodbye",
+                  "Good morning"
+                ]
+              },
+              "acceptedAnswers": [
+                "Welcome"
+              ],
               "explanation": "“Akwaaba” is how you welcome someone."
             },
             {
@@ -120,8 +161,17 @@
               "itemId": "twi-b1-l1-medaase",
               "type": "multiple_choice",
               "prompt": "How do you say “Thank you” in Twi?",
-              "payload": { "options": ["Medaase", "Maakye", "Akwaaba", "Nante yie"] },
-              "acceptedAnswers": ["Medaase"],
+              "payload": {
+                "options": [
+                  "Medaase",
+                  "Maakye",
+                  "Akwaaba",
+                  "Nante yie"
+                ]
+              },
+              "acceptedAnswers": [
+                "Medaase"
+              ],
               "explanation": "“Medaase” means thank you."
             },
             {
@@ -129,8 +179,17 @@
               "itemId": "twi-b1-l1-maakye",
               "type": "multiple_choice",
               "prompt": "Which greeting do you use in the morning?",
-              "payload": { "options": ["Maakye", "Maaha", "Maadwo", "Medaase"] },
-              "acceptedAnswers": ["Maakye"],
+              "payload": {
+                "options": [
+                  "Maakye",
+                  "Maaha",
+                  "Maadwo",
+                  "Medaase"
+                ]
+              },
+              "acceptedAnswers": [
+                "Maakye"
+              ],
               "explanation": "“Maakye” is the morning greeting."
             },
             {
@@ -138,8 +197,17 @@
               "itemId": "twi-b1-l1-wo-ho-te-sen",
               "type": "multiple_choice",
               "prompt": "What does “Wo ho te sɛn?” mean?",
-              "payload": { "options": ["How are you?", "What is your name?", "Where are you from?", "See you later"] },
-              "acceptedAnswers": ["How are you?"],
+              "payload": {
+                "options": [
+                  "How are you?",
+                  "What is your name?",
+                  "Where are you from?",
+                  "See you later"
+                ]
+              },
+              "acceptedAnswers": [
+                "How are you?"
+              ],
               "explanation": "“Wo ho te sɛn?” asks how someone is."
             },
             {
@@ -147,8 +215,17 @@
               "itemId": "twi-b1-l1-me-ho-ye",
               "type": "multiple_choice",
               "prompt": "Someone asks “Wo ho te sɛn?”. Which answer means “I am fine”?",
-              "payload": { "options": ["Me ho yɛ", "Akwaaba", "Nante yie", "Maadwo"] },
-              "acceptedAnswers": ["Me ho yɛ"],
+              "payload": {
+                "options": [
+                  "Me ho yɛ",
+                  "Akwaaba",
+                  "Nante yie",
+                  "Maadwo"
+                ]
+              },
+              "acceptedAnswers": [
+                "Me ho yɛ"
+              ],
               "explanation": "“Me ho yɛ” means I am fine."
             },
             {
@@ -158,10 +235,22 @@
               "prompt": "Match each Twi word with its meaning",
               "payload": {
                 "pairs": [
-                  { "left": "Maakye", "right": "Good morning" },
-                  { "left": "Maaha", "right": "Good afternoon" },
-                  { "left": "Maadwo", "right": "Good evening" },
-                  { "left": "Medaase", "right": "Thank you" }
+                  {
+                    "left": "Maakye",
+                    "right": "Good morning"
+                  },
+                  {
+                    "left": "Maaha",
+                    "right": "Good afternoon"
+                  },
+                  {
+                    "left": "Maadwo",
+                    "right": "Good evening"
+                  },
+                  {
+                    "left": "Medaase",
+                    "right": "Thank you"
+                  }
                 ]
               },
               "acceptedAnswers": null,
@@ -172,9 +261,527 @@
               "itemId": "twi-b1-l1-nante-yie",
               "type": "multiple_choice",
               "prompt": "What do you say to someone who is leaving?",
-              "payload": { "options": ["Nante yie", "Maakye", "Akwaaba", "Me ho yɛ"] },
-              "acceptedAnswers": ["Nante yie"],
+              "payload": {
+                "options": [
+                  "Nante yie",
+                  "Maakye",
+                  "Akwaaba",
+                  "Me ho yɛ"
+                ]
+              },
+              "acceptedAnswers": [
+                "Nante yie"
+              ],
               "explanation": "“Nante yie” means goodbye, or literally “walk well”."
+            }
+          ]
+        },
+        {
+          "id": "twi-b1-l2",
+          "title": "Introducing Yourself",
+          "description": "Say your name, ask someone theirs, and say where you are from.",
+          "estimatedMinutes": 5,
+          "items": [
+            {
+              "id": "twi-b1-l2-me-din-de",
+              "kind": "phrase",
+              "text": "Me din de …",
+              "respelling": "meh deen deh",
+              "audioFile": null,
+              "notes": "Add your name at the end, like “Me din de Ama”.",
+              "reviewed": false,
+              "translations": {
+                "en": {
+                  "text": "My name is …"
+                }
+              }
+            },
+            {
+              "id": "twi-b1-l2-wo-din-de-sen",
+              "kind": "phrase",
+              "text": "Wo din de sɛn?",
+              "respelling": "woh deen deh SEHN",
+              "audioFile": null,
+              "notes": null,
+              "reviewed": false,
+              "translations": {
+                "en": {
+                  "text": "What is your name?"
+                }
+              }
+            },
+            {
+              "id": "twi-b1-l2-me-firi-ghana",
+              "kind": "phrase",
+              "text": "Me firi Ghana",
+              "respelling": "meh FEE-ree GAH-nah",
+              "audioFile": null,
+              "notes": "Replace “Ghana” with any country or town.",
+              "reviewed": false,
+              "translations": {
+                "en": {
+                  "text": "I am from Ghana"
+                }
+              }
+            },
+            {
+              "id": "twi-b1-l2-wo-firi-he",
+              "kind": "phrase",
+              "text": "Wo firi he?",
+              "respelling": "woh FEE-ree HEH",
+              "audioFile": null,
+              "notes": null,
+              "reviewed": false,
+              "translations": {
+                "en": {
+                  "text": "Where are you from?"
+                }
+              }
+            },
+            {
+              "id": "twi-b1-l2-aane",
+              "kind": "word",
+              "text": "Aane",
+              "respelling": "AH-neh",
+              "audioFile": null,
+              "notes": null,
+              "reviewed": false,
+              "translations": {
+                "en": {
+                  "text": "Yes"
+                }
+              }
+            },
+            {
+              "id": "twi-b1-l2-daabi",
+              "kind": "word",
+              "text": "Daabi",
+              "respelling": "DAH-bee",
+              "audioFile": null,
+              "notes": null,
+              "reviewed": false,
+              "translations": {
+                "en": {
+                  "text": "No"
+                }
+              }
+            },
+            {
+              "id": "twi-b1-l2-mepa-wo-kyew",
+              "kind": "phrase",
+              "text": "Mepa wo kyɛw",
+              "respelling": "meh-pah woh CHEH-oo",
+              "audioFile": null,
+              "notes": "Also used to say “excuse me”.",
+              "reviewed": false,
+              "translations": {
+                "en": {
+                  "text": "Please"
+                }
+              }
+            },
+            {
+              "id": "twi-b1-l2-yoo",
+              "kind": "word",
+              "text": "Yoo",
+              "respelling": "YOH",
+              "audioFile": null,
+              "notes": "Also used to agree, like “alright”.",
+              "reviewed": false,
+              "translations": {
+                "en": {
+                  "text": "Okay"
+                }
+              }
+            }
+          ],
+          "exercises": [
+            {
+              "id": "twi-b1-l2-ex1",
+              "itemId": "twi-b1-l2-wo-din-de-sen",
+              "type": "multiple_choice",
+              "prompt": "What does “Wo din de sɛn?” mean?",
+              "payload": {
+                "options": [
+                  "What is your name?",
+                  "Where are you from?",
+                  "How are you?",
+                  "Thank you"
+                ]
+              },
+              "acceptedAnswers": [
+                "What is your name?"
+              ],
+              "explanation": "“Wo din de sɛn?” asks for someone’s name."
+            },
+            {
+              "id": "twi-b1-l2-ex2",
+              "itemId": "twi-b1-l2-me-din-de",
+              "type": "multiple_choice",
+              "prompt": "How do you say “My name is …” in Twi?",
+              "payload": {
+                "options": [
+                  "Me din de …",
+                  "Wo din de sɛn?",
+                  "Me firi Ghana",
+                  "Mepa wo kyɛw"
+                ]
+              },
+              "acceptedAnswers": [
+                "Me din de …"
+              ],
+              "explanation": "“Me din de” is followed by your name."
+            },
+            {
+              "id": "twi-b1-l2-ex3",
+              "itemId": "twi-b1-l2-wo-firi-he",
+              "type": "multiple_choice",
+              "prompt": "What does “Wo firi he?” mean?",
+              "payload": {
+                "options": [
+                  "Where are you from?",
+                  "What is your name?",
+                  "How are you?",
+                  "Goodbye"
+                ]
+              },
+              "acceptedAnswers": [
+                "Where are you from?"
+              ],
+              "explanation": "“Wo firi he?” asks where someone comes from."
+            },
+            {
+              "id": "twi-b1-l2-ex4",
+              "itemId": "twi-b1-l2-me-firi-ghana",
+              "type": "multiple_choice",
+              "prompt": "Someone asks “Wo firi he?”. Which answer means “I am from Ghana”?",
+              "payload": {
+                "options": [
+                  "Me firi Ghana",
+                  "Me din de …",
+                  "Daabi",
+                  "Yoo"
+                ]
+              },
+              "acceptedAnswers": [
+                "Me firi Ghana"
+              ],
+              "explanation": "“Me firi Ghana” means I am from Ghana."
+            },
+            {
+              "id": "twi-b1-l2-ex5",
+              "itemId": null,
+              "type": "matching",
+              "prompt": "Match each Twi word with its meaning",
+              "payload": {
+                "pairs": [
+                  {
+                    "left": "Aane",
+                    "right": "Yes"
+                  },
+                  {
+                    "left": "Daabi",
+                    "right": "No"
+                  },
+                  {
+                    "left": "Mepa wo kyɛw",
+                    "right": "Please"
+                  },
+                  {
+                    "left": "Yoo",
+                    "right": "Okay"
+                  }
+                ]
+              },
+              "acceptedAnswers": null,
+              "explanation": null
+            },
+            {
+              "id": "twi-b1-l2-ex6",
+              "itemId": "twi-b1-l2-mepa-wo-kyew",
+              "type": "multiple_choice",
+              "prompt": "How do you say “Please” in Twi?",
+              "payload": {
+                "options": [
+                  "Mepa wo kyɛw",
+                  "Medaase",
+                  "Aane",
+                  "Daabi"
+                ]
+              },
+              "acceptedAnswers": [
+                "Mepa wo kyɛw"
+              ],
+              "explanation": "“Mepa wo kyɛw” means please."
+            },
+            {
+              "id": "twi-b1-l2-ex7",
+              "itemId": "twi-b1-l2-daabi",
+              "type": "multiple_choice",
+              "prompt": "What does “Daabi” mean?",
+              "payload": {
+                "options": [
+                  "No",
+                  "Yes",
+                  "Okay",
+                  "Please"
+                ]
+              },
+              "acceptedAnswers": [
+                "No"
+              ],
+              "explanation": "“Daabi” means no, and “Aane” means yes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "twi-b2",
+      "title": "Family & People",
+      "description": "Talk about your family and the people around you.",
+      "lessons": [
+        {
+          "id": "twi-b2-l1",
+          "title": "Family",
+          "description": "Name the members of your family and the people around you.",
+          "estimatedMinutes": 5,
+          "items": [
+            {
+              "id": "twi-b2-l1-abusua",
+              "kind": "word",
+              "text": "Abusua",
+              "respelling": "ah-BOO-soo-ah",
+              "audioFile": null,
+              "notes": "Can also mean your extended family or clan.",
+              "reviewed": false,
+              "translations": {
+                "en": {
+                  "text": "Family"
+                }
+              }
+            },
+            {
+              "id": "twi-b2-l1-maame",
+              "kind": "word",
+              "text": "Maame",
+              "respelling": "MAH-meh",
+              "audioFile": null,
+              "notes": null,
+              "reviewed": false,
+              "translations": {
+                "en": {
+                  "text": "Mother"
+                }
+              }
+            },
+            {
+              "id": "twi-b2-l1-papa",
+              "kind": "word",
+              "text": "Papa",
+              "respelling": "PAH-pah",
+              "audioFile": null,
+              "notes": null,
+              "reviewed": false,
+              "translations": {
+                "en": {
+                  "text": "Father"
+                }
+              }
+            },
+            {
+              "id": "twi-b2-l1-nana",
+              "kind": "word",
+              "text": "Nana",
+              "respelling": "NAH-nah",
+              "audioFile": null,
+              "notes": "Also a respectful title for an elder or a chief.",
+              "reviewed": false,
+              "translations": {
+                "en": {
+                  "text": "Grandparent"
+                }
+              }
+            },
+            {
+              "id": "twi-b2-l1-nua",
+              "kind": "word",
+              "text": "Nua",
+              "respelling": "NOO-ah",
+              "audioFile": null,
+              "notes": "Used for a sibling of either sex.",
+              "reviewed": false,
+              "translations": {
+                "en": {
+                  "text": "Brother or sister"
+                }
+              }
+            },
+            {
+              "id": "twi-b2-l1-obaa",
+              "kind": "word",
+              "text": "Ɔbaa",
+              "respelling": "aw-BAH",
+              "audioFile": null,
+              "notes": "The vowel Ɔ sounds like “aw” in “law”.",
+              "reviewed": false,
+              "translations": {
+                "en": {
+                  "text": "Woman"
+                }
+              }
+            },
+            {
+              "id": "twi-b2-l1-obarima",
+              "kind": "word",
+              "text": "Ɔbarima",
+              "respelling": "aw-BAH-ree-mah",
+              "audioFile": null,
+              "notes": null,
+              "reviewed": false,
+              "translations": {
+                "en": {
+                  "text": "Man"
+                }
+              }
+            }
+          ],
+          "exercises": [
+            {
+              "id": "twi-b2-l1-ex1",
+              "itemId": "twi-b2-l1-maame",
+              "type": "multiple_choice",
+              "prompt": "What does “Maame” mean?",
+              "payload": {
+                "options": [
+                  "Mother",
+                  "Father",
+                  "Grandparent",
+                  "Woman"
+                ]
+              },
+              "acceptedAnswers": [
+                "Mother"
+              ],
+              "explanation": "“Maame” means mother."
+            },
+            {
+              "id": "twi-b2-l1-ex2",
+              "itemId": "twi-b2-l1-papa",
+              "type": "multiple_choice",
+              "prompt": "How do you say “Father” in Twi?",
+              "payload": {
+                "options": [
+                  "Papa",
+                  "Maame",
+                  "Nana",
+                  "Nua"
+                ]
+              },
+              "acceptedAnswers": [
+                "Papa"
+              ],
+              "explanation": "“Papa” means father."
+            },
+            {
+              "id": "twi-b2-l1-ex3",
+              "itemId": "twi-b2-l1-nana",
+              "type": "multiple_choice",
+              "prompt": "What does “Nana” mean?",
+              "payload": {
+                "options": [
+                  "Grandparent",
+                  "Mother",
+                  "Man",
+                  "Family"
+                ]
+              },
+              "acceptedAnswers": [
+                "Grandparent"
+              ],
+              "explanation": "“Nana” means grandparent, and is also used to respect an elder."
+            },
+            {
+              "id": "twi-b2-l1-ex4",
+              "itemId": "twi-b2-l1-abusua",
+              "type": "multiple_choice",
+              "prompt": "What does “Abusua” mean?",
+              "payload": {
+                "options": [
+                  "Family",
+                  "Woman",
+                  "Man",
+                  "Brother or sister"
+                ]
+              },
+              "acceptedAnswers": [
+                "Family"
+              ],
+              "explanation": "“Abusua” means family."
+            },
+            {
+              "id": "twi-b2-l1-ex5",
+              "itemId": null,
+              "type": "matching",
+              "prompt": "Match each Twi word with its meaning",
+              "payload": {
+                "pairs": [
+                  {
+                    "left": "Maame",
+                    "right": "Mother"
+                  },
+                  {
+                    "left": "Papa",
+                    "right": "Father"
+                  },
+                  {
+                    "left": "Nua",
+                    "right": "Brother or sister"
+                  },
+                  {
+                    "left": "Nana",
+                    "right": "Grandparent"
+                  }
+                ]
+              },
+              "acceptedAnswers": null,
+              "explanation": null
+            },
+            {
+              "id": "twi-b2-l1-ex6",
+              "itemId": "twi-b2-l1-obarima",
+              "type": "multiple_choice",
+              "prompt": "What does “Ɔbarima” mean?",
+              "payload": {
+                "options": [
+                  "Man",
+                  "Woman",
+                  "Father",
+                  "Grandparent"
+                ]
+              },
+              "acceptedAnswers": [
+                "Man"
+              ],
+              "explanation": "“Ɔbarima” means man."
+            },
+            {
+              "id": "twi-b2-l1-ex7",
+              "itemId": "twi-b2-l1-obaa",
+              "type": "multiple_choice",
+              "prompt": "How do you say “Woman” in Twi?",
+              "payload": {
+                "options": [
+                  "Ɔbaa",
+                  "Ɔbarima",
+                  "Maame",
+                  "Abusua"
+                ]
+              },
+              "acceptedAnswers": [
+                "Ɔbaa"
+              ],
+              "explanation": "“Ɔbaa” means woman."
             }
           ]
         }

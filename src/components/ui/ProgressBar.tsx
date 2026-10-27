@@ -16,11 +16,13 @@ type Props = {
   /** Where the fill animates from on mount (0 to 1). Defaults to `progress`. */
   from?: number;
   color?: string;
+  /** Color of the empty part of the bar. Defaults to the theme's variant surface. */
+  trackColor?: string;
   label?: string;
   style?: StyleProp<ViewStyle>;
 };
 
-export function ProgressBar({ progress, from, color, label, style }: Props) {
+export function ProgressBar({ progress, from, color, trackColor, label, style }: Props) {
   const { colors, radius, sizing, motion } = useTheme();
   const reduceMotion = useReducedMotion();
   const value = useSharedValue(reduceMotion ? progress : (from ?? progress));
@@ -40,7 +42,7 @@ export function ProgressBar({ progress, from, color, label, style }: Props) {
       accessibilityValue={{ min: 0, max: 100, now: Math.round(progress * 100) }}
       style={[
         styles.track,
-        { height: sizing.progressBar, borderRadius: radius.pill, backgroundColor: colors.surfaceVariant },
+        { height: sizing.progressBar, borderRadius: radius.pill, backgroundColor: trackColor ?? colors.surfaceVariant },
         style,
       ]}
     >

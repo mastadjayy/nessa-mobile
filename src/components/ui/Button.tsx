@@ -5,7 +5,7 @@ import { useTheme } from '@/theme';
 type Props = {
     label: string;
     onPress: () => void;
-    variant?: 'primary' | 'secondary' | 'success' | 'error';
+    variant?: 'primary' | 'secondary' | 'success' | 'error' | 'inverted';
     disabled?: boolean;
     accessibilityHint?: string;
     style?: StyleProp<ViewStyle>;
@@ -31,12 +31,14 @@ export function Button({
         secondary: colors.surfaceVariant,
         success: colors.success,
         error: colors.error,
+        inverted: colors.textOnPrimary,
     } as const;
     const labels = {
         primary: colors.textOnPrimary,
         secondary: colors.text,
         success: colors.onSuccess,
-        error: colors.onError,        
+        error: colors.onError,
+        inverted: '#FFFFFF',
     } as const;
 
     const background = disabled ? colors.disabledFill : fills[variant];

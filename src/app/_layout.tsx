@@ -86,7 +86,7 @@ export default function RootLayout() {
                     </Stack.Protected>
                     {/* Returning learners go straight to the app */}
                     <Stack.Protected guard={onboardingCompleted}>
-                        <Stack.Screen name="home" />
+                        <Stack.Screen name="(tabs)" />
                         <Stack.Screen
                             name="lesson/[id]"
                             options={{ animation: 'slide_from_bottom', gestureEnabled: false }}

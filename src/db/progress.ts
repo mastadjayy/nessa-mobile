@@ -1,3 +1,5 @@
+import { computeStreak, type Streak } from '@/features/progress/streak';
+
 import { getDb } from './index';
 
 /** Today's date in the device's local time zone, as YYYY-MM-DD. Defines the streak "day". */
@@ -29,6 +31,17 @@ export function getXpToday(): number {
     [localDateString()],
   );
   return row?.total ?? 0;
+}
+
+/** The learner's streak, worked out from the days that have XP events. */
+export function getStreak(): Streak {
+  const rows = getDb().getAllSync<{ local_date: string }>(
+    'SELECT DISTINCT local_date FROM xp_events ORDER BY local_date DESC',
+  );
+  return computeStreak(
+    rows.map((row) => row.local_date),
+    localDateString(),
+  );
 }
 
 export function countCompletedLessons(): number {
